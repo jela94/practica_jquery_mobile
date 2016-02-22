@@ -11,8 +11,9 @@
     </head>
     <body>
         <?php
-        include_once 'conexion.php'; 
-        
+        include_once 'conexion.php';
+        session_start();
+        $alumno=$_SESSION["alumno"];
         
         
         $contenido=filter_input(INPUT_POST, 'contenido');
@@ -27,7 +28,13 @@
         <div data-role="page">
             <div data-role="header">
                 <a href="eligeCurso.php" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext"></a>
-                <h1>Notas</h1>
+                <h1>Notas <?php 
+                $resultado = $conexion->query("select alumno from alumnos where idAlumno='$alumno'");
+                        while ($registro = $resultado->fetch()) {
+                            echo $registro['alumno'];
+                
+                        }
+                ?></h1>
                 <a href="index.php" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext"></a>
             </div>
 

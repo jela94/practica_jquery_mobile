@@ -15,6 +15,8 @@
     include_once 'conexion.php';    
     session_start();
     error_reporting(E_ALL^E_NOTICE);
+    $alumno=filter_input(INPUT_POST, 'alumno');
+    $_SESSION['alumno']= $alumno;
     
     ?>
 
@@ -26,7 +28,7 @@
   </div>
 
   <div data-role="main" class="ui-content">
-      <form method="post" action="eligeCurso.php" name="frm" onchange="cambiar();">
+      <form method="post" action="eligeCurso.php" name="frm" onchange="cambiar();" data-ajax="false">
         <h3>Elige curso y alumno</h3>
       <fieldset class="ui-field-contain">
         <label>Curso</label>
